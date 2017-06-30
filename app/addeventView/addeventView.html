@@ -1,0 +1,61 @@
+<div ng-controller="addeventViewCtrl_2 as $ctrl">
+<div class="alert alert-success alert-dismissible" role="alert" ng-if="dati.feedback">{{ dati.feedback }}</div>
+
+<div id="boxev1">
+    <div class="row">
+        <div class="col-xs-12">
+            <ul class="media-list">
+                <form id="frmAddEvento" role="form" ng-submit="addEvento()">
+                    <h2>Aggiungi nuovo Evento</h2>
+
+                    <div class="form-group">
+                        <label for="txtTitolo">Titolo</label>
+                        <input  type="text" class="form-control" id="txtTitolo" placeholder="Inserisci Titolo" name="name" ng-model="dati.nome_evento" />
+                    </div>
+                    <div class="form-group">
+                        <label for="txtTema">Tema</label>
+                        <input type="text" class="form-control" id="txtTema" placeholder="Inserisci Tema" name="tema" ng-model="dati.tema" />
+                    </div >
+                    <div class="form-group">
+                        <label for="txtInaugurazione">Inaugurazione</label>
+                        <input type="date" id="txtInaugurazione" class="form-control" name="input" ng-model="dati.inaugurazione" placeholder="yyyy-MM-dd" min="{{today | date: 'yyyy-MM-dd'}}"/>
+                    </div>
+                    <div class="form-group">
+                        <label for="txtData_Inizio">Data Inizio</label>
+                        <input type="date" id="txtData_Inizio" class="form-control" name="input" ng-model="dati.start" placeholder="yyyy-MM-dd" min="dati.inaugurazione"/>
+                    </div>
+                    <div class="form-group">
+                        <label for="txtData_Fine">Data Fine</label>
+                        <input type="date" id="txtData_Fine" class="form-control" name="input" ng-model="dati.end" placeholder="yyyy-MM-dd" min="dati.start">
+                    </div>
+                    <div class="form-group">
+                        <label for="txtUbicazione">Ubicazione</label>
+                        <input type="text" class="form-control" id="txtUbicazione" placeholder="Ubicazione" name="ubicazione" ng-model="dati.ubicazione" />
+                    </div>
+                    <div class="form-group">
+                        <label for="txtInfo">Ulteriori Info</label>
+                        <input type="text" class="form-control" id="txtInfo" placeholder="Inserisci testo" name="info" ng-model="dati.info" />
+                    </div>
+                    <div class="form-group">
+                        <b>Condition report:</b>
+                        <file-upload on-change="$ctrl.onChange">
+                        </file-upload>
+                    </div>
+                    <button type="submit" class="btn btn-success center-block">Insert</button>
+                </form>
+            </ul>
+        </div>
+    </div>
+</div>
+</div>
+
+<div id="boxev2">
+    <div class="row">
+        <div class="col-xs-12">
+            <ul class="media-list">
+
+            </ul>
+        </div>
+    </div>
+</div>
+</div>

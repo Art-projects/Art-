@@ -1,0 +1,43 @@
+
+<div id="boxev2" class="row text-center">
+    <input id="Search" type="text" class="form-control" ng-model="eventSearch" placeholder="Event Search">
+    <div class="col-sm-4 "ng-repeat="evento in dati.eventos | orderBy:orderProp | filter:eventSearch">
+        <div class="thumbnail">
+            <div ng-repeat="user in users" ng-if="evento.autoreId == user.$id">
+            <a href="#!/detailsEvento/{{evento.autoreId}}/{{evento.id}}">
+                <img class="media-object" ng-src="{{evento.img_url}}" alt="{{evento.img_alt}}">
+                <p><strong>{{evento.tema}}</strong></p><br/>
+                <p>{{user.surname}}</p><br/>
+            </a>
+            <button class="center-block btn btn-danger" ng-click="removeEvento(evento.id)" ng-if="dati.userId == evento.autoreId">Rimuovi</button>
+            <a href="#!/addModifyEvent/{{evento.id}}">
+                <button class="center-block btn btn-info" ng-if ="dati.userId == evento.autoreId">Modifica</button>
+            </a>
+
+        </div>
+        </div>
+    </div>
+</div>
+
+<div id="boxev1">
+
+
+        <div ng-class="{'active' : dati.currentView === 'addEvento'}"><a href="#!/addEvento" data-toggle="modal" data-target="#myModal">
+            <button type="button" class="btn btn-primary btn-lg btn-block">Crea evento</button>
+            </a></div>
+
+    <div>
+        <carousel interval="myInterval"><h1>I miei Eventi</h1>
+            <slide ng-repeat="evento in dati.eventos | orderBy:orderProp | filter:Autore(evento.autoreId)" active="slide.active">
+                <a href="#!/detailsEvento/{{evento.autoreId}}/{{evento.id}}">
+
+                <img class="carousel" ng-src="{{evento.img_url}}" alt="{{evento.img_alt}}" style="width:100%;" >
+                <div class="carousel-caption">
+                    <h6>{{evento.tema}}</h6>
+                </div></a>
+            </slide>
+        </carousel>
+    </div>
+
+
+</div>

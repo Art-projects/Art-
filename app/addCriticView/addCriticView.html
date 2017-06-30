@@ -1,0 +1,45 @@
+
+<div id="boxev1">
+    <div class="row">
+        <div class="col-xs-12">
+            <ul class="media-list">
+                <form id="frmAddCritica1" role="form" ng-submit="addCritica()">
+                    <h2>Aggiungi Nuova Critica</h2>
+
+                    <div class="form-group">
+                        <label for="txtTitolo">Titolo</label>
+                        <input  type="text" class="form-control" id="txtTitolo" placeholder="Inserisci Titolo" name="name" ng-model="dati.nome_critica" />
+                    </div>
+                    <div class="form-group">
+                        <label for="txtTema">Tema</label>
+                        <input type="text" class="form-control" id="txtTema" placeholder="Inserisci Tema" name="tema" ng-model="dati.tema" />
+                    </div>
+                    <div class="form-group">
+                        <label for="txtOpera">Opera</label>
+                        <input type="text" class="form-control" id="txtOpera" placeholder="Inserisci nome opera" name="opera" ng-model="dati.opera" />
+                    </div>
+                </form>
+            </ul>
+        </div>
+    </div>
+</div>
+</div>
+
+<div id="boxev2">
+    <div class="alert alert-success alert-dismissible" role="alert" ng-if="dati.feedback">{{ dati.feedback }}</div>
+    <div class="row">
+        <div class="col-xs-12">
+            <form id="frmAddCritica2" role="form" ng-submit="addCritica()">
+                <ul class="media-list">
+                    <div class="form-group">
+                        <label for="txtCritica">Critica</label>
+                        <textarea  type="text" class="form-control" id="txtCritica" placeholder="Inserisci testo" name="testo" ng-model="dati.testo" rows="35" cols="1000" style="width: 819px;">
+                        </textarea>
+                    </div>
+                </ul>
+                <button href="#!/homeView" type="submit" class="btn btn-success center-block">Insert</button> <!-- modifico per non mandare alla home ma alla critica compilata e fa-->
+            </form>
+        </div>
+    </div>
+</div>
+</div>

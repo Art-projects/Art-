@@ -1,0 +1,41 @@
+<div id="boxev2" class="row text-center">
+                <input id="Search" type="text" class="form-control" ng-model="criticaSearch" placeholder="Critica Search">
+                    <div class="col-sm-4" ng-repeat="critica in dati.critiche | orderBy:orderProp | filter:criticaSearch">
+                        <div class="thumbnail">
+
+                        <div ng-repeat="user in users" ng-if="user.$id==critica.autoreId">
+                            <br/>
+
+                            <a href="#!/detailCritica/{{critica.autoreId}}/{{critica.id}}">
+                                <h4 class="media-heading"><strong>{{critica.nome_critica}}</strong></h4>                        </a>
+
+                            <a href="#!/otherUser/{{user.$id}}">{{user.surname}}</a>
+
+
+                            <br/>                            <br/><br/>
+
+                            <button class="btn btn-danger" ng-click="removeCritica(critica.id)"ng-if="dati.userId == critica.autoreId">Rimuovi</button>
+                        <a href="#!/addModifyCritic/{{critica.id}}">
+                            <button class="btn btn-info" ng-if="dati.userId == critica.autoreId" >Modifica</button></a>
+                        </div>
+
+                        </div></div></div>
+
+
+<div id="boxev1">
+
+    <div ng-class="{'active' : dati.currentView === 'addCritica'}"><a href="#!/addCritica" data-toggle="modal" data-target="#myModal">
+        <button type="button" class="btn btn-primary btn-lg btn-block">Aggiungi Critica</button></a>
+    </div>
+
+    <div>
+        <carousel interval="myInterval"><h1>Le mie Critiche</h1>
+            <slide ng-repeat="critica in dati.critiche | orderBy:orderProp | filter:Autore(dati.userId)" active="slide.active">
+                <textarea style="margin: 0px; width: 401px; height: 298px;">{{critica.testo}}</textarea>
+                <div class="carousel-caption">
+                    <!--<h4>Slide {{critica.nome_critica}}</h4>-->
+                </div>
+            </slide>
+        </carousel>
+    </div>
+</div>

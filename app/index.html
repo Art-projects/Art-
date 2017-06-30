@@ -1,0 +1,158 @@
+<html>
+  <head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <title>Arté</title>
+  <meta name="description" content="">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <link rel="stylesheet" href="app.css"/>
+    <link rel="stylesheet" href="../lib/calendar/fullcalendar.css">
+
+    <!-- Angular -->
+    <script src="../lib/angular/angular.js"></script>
+    <script src="../lib/angular/angular-route.min.js"></script>
+    <script src="../lib/angular/angular-resource.min.js"></script>
+
+
+    <!-- Calendar -->
+    <link rel="stylesheet" href="../lib/bootstrap/css/bootstrap.css"/>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.js"></script>
+    <script src="http://angular-ui.github.io/bootstrap/ui-bootstrap-tpls-0.13.0.js"></script>
+    <script src="../lib/calendar/moment.js"></script>
+    <script src="../lib/calendar/fullcalendar.min.js"></script>
+    <script src="../lib/calendar/gcal.min.js"></script>
+    <script src="../lib/calendar/calendar.js"></script>
+
+
+    <!-- Bootstrap -->
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+
+
+    <!-- Firebase -->
+    <script src="https://www.gstatic.com/firebasejs/3.6.6/firebase.js"></script>
+
+  <!-- AngularFire -->
+    <script src="https://cdn.firebase.com/libs/angularfire/2.3.0/angularfire.min.js"></script>
+
+    <!-- ng-map and Google maps-->
+    <script src="../lib/ng-map.min.js"></script>
+
+    <script src="app.js"></script>
+
+  <script src="homeView/homeView.js"></script>
+
+  <script src="components/evento/evento.js"></script>
+  <script src="components/evento/evento-service.js"></script>
+  <script src="components/evento/single-evento-service.js"></script>
+  <script src="components/evento/insert-evento-service.js"></script>
+  <script src="components/evento/modify-evento-service.js"></script>
+  <script src="components/evento/insert-user-service.js"></script>
+
+
+  <script src="components/critiche/critiche.js"></script>
+  <script src="components/critiche/critiche-service.js"></script>
+  <script src="components/critiche/insert-critica-service.js"></script>
+  <script src="components/critiche/single-critica-service.js"></script>
+    <script src="components/critiche/modify-critica-service.js"></script>
+
+    <script src="components/opere/opere.js"></script>
+    <script src="components/opere/opere-service.js"></script>
+    <script src="components/opere/insert-opera-service.js"></script>
+    <script src="components/opere/single-opera-service.js"></script>
+
+
+  <script src="components/authentication/authentication.js"></script>
+  <script src="components/authentication/authentication-service.js"></script>
+
+
+  <script src="components/users/users-list-service.js"></script>
+  <script src="components/users/users-service.js"></script>
+  <script src="components/users/users.js"></script>
+  <script src="components/users/user-follow-service.js"></script>
+    <script src="components/users/users-conference-service.js"></script>
+
+
+    <script src="components/file-upload/file-upload.js"></script>
+    <script src="components/file-upload/file-upload-directive.js"></script>
+
+
+    <script src="opereListView/opereListView.js"></script>
+  <script src="addOperaView/addOperaView.js"></script>
+  <script src="detailOperaView/detailOperaView.js"></script>
+
+
+  <script src="addeventView/addeventView.js"></script>
+  <script src="listeventView/listeventView.js"></script>
+  <script src="eventView/eventView.js"></script>
+    <script src="modifyEventView/modifyEventView.js"></script>
+
+    <script src="usersConferenceListView/usersConferenceListView.js"></script>
+    <script src="conferenceView/conferenceView.js"></script>
+
+
+  <script src="criticheListView/criticheListView.js"></script>
+  <script src="detailCriticaView/detailCriticaView.js"></script>
+  <script src="addCriticView/addCriticView.js"></script>
+    <script src="modifyCriticView/modifyCriticView.js"></script>
+
+  <script src="usersListView/usersListView.js"></script>
+  <script src="userProfile/userProfileView.js"></script>
+  <script src="OtheUserProfile/OtheUserProfile.js"></script>
+
+
+    <script src="loginView/loginView.js"></script>
+  <script src="userRegistrationView/userRegistrationView.js"></script>
+
+
+
+
+    <link rel="stylesheet" href="../styles/custom.css"/>
+
+
+
+  </head>
+<body ng-app="myApp" ng-controller="MainCtrl">
+<header class="navbar navbar-default navbar-fixed-top">
+  <div class="container-fluid">
+    <div class="navbar-header">
+      <ul class="nav navbar-nav navbar-center">
+          <li ng-class="{'active' : dati.currentView === 'home'}"><a class="navbar-brand" href="#!/home"><span class="glyphicon glyphicon-home"></span></a></li>
+        <!--<a href="index.html"><h1 class="navbar-brand" >Arté</h1></a>-->
+        <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#myNavbar">
+          <span class="icon-bar"></span>
+          <span class="icon-bar"></span>
+          <span class="icon-bar"></span>
+        </button>
+      </ul>
+    </div>
+
+    <div class="collapse navbar-collapse" id="myNavbar">
+      <ul class="nav navbar-nav navbar-right">
+        <li ng-class="{'active' : dati.currentView === 'userProfile'}" ng-if="isLogged()"><a class="navbar-user" title="Profile" href="#!/userProfile"><span class="glyphicon"></span></a></li>
+        <li ng-class="{'active' : dati.currentView === 'addOpera'}" ng-if="isLogged()"><a class="navbar-add"  title="Add" href="#!/addOpera"><span class="glyphicon">AddOpera</span></a></li>
+        <li ng-class="{'active' : dati.currentView === 'listeventView'}" ng-if="isLogged()"><a class="navbar-events " title="Events" href="#!/listeventView"><span class="glyphicon">Events</span></a></li>
+        <li ng-class="{'active' : dati.currentView === 'listeOpere'}" ng-if="isLogged()"><a class="navbar-opere " title="Works" href="#!/listeOpere"><span class="glyphicon">Opere</span></a></li>
+        <li ng-class="{'active' : dati.currentView === 'listeCritiche'}" ng-if="isLogged()"><a class="navbar-critics " title="Critics" href="#!/listeCritiche"><span class="glyphicon">Critics</span></a></li>
+          <li ng-class="{'active' : dati.currentView === 'usersList'}" ng-if="isLogged()"><a class="navbar-users " title="Users" href="#!/usersList"><span class="glyphicon">Users</span></a></li>
+      </ul>
+    </div>
+  </div>
+</header>
+
+
+<div class="overlay">
+</div>
+
+
+<div class="container-fluid">
+  <div class="row">
+    <div class="col-xs-12">
+      <div class="container-fluid" ng-view>
+      </div>
+    </div>
+  </div>
+</div>
+
+</body>
+</html>

@@ -1,0 +1,12 @@
+<div id="boxev2" class="row text-center">
+<input id="Search" type="text" class="form-control" ng-model="utenteSearch" placeholder="Utente Search">
+    <h4>Select a user</h4>
+    <div class="col-sm-4" ng-repeat="user in dati.availableUsers| orderBy:orderProp | filter:utenteSearch" ng-if="dati.userId != user.userId">
+        <div class="thumbnail">
+
+        <a href="#!/otherUser/{{user.$id}}">{{user.name}},{{user.surname}}<br/><br/><img class="media-object" ng-src="{{user.img_url}}" alt="{{user.img_alt}}" style="display: inline; max-height: 110px;">
+            </a>
+    </div>
+
+
+</div></div>

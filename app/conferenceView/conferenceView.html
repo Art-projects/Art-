@@ -1,0 +1,13 @@
+<div id="box1" class="row">
+    <p><a href="#!/detailsEvento/{{dati.evento.autoreId}}/{{dati.evento.id}}">&nbsp&nbsp&nbsp Torna all'evento</a><br>
+    <a href="#!/ConferenceList/{{dati.evento.id}}">&nbsp&nbsp&nbsp Cambia utente</a></p>
+
+    <div class="col-xs-12 col-md-4">
+        <div id="messagesDiv">
+            <div ng-repeat="msg in dati.messages  | orderBy:orderProp" ng-if="[userId, dati.partecipante.userId].indexOf(msg.sender) > -1 && [userId, dati.partecipante.userId].indexOf(msg.receiver) > -1 ">
+                <em>{{msg.utctime}} - {{msg.senderName}}</em>: {{msg.text}}
+            </div>
+        </div>
+        {{dati.userInfo.email}}: <input type="text" ng-model="dati.msg" ng-keydown="addMessage($event)" placeholder="Message...">
+    </div>
+</div>
