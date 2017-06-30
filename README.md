@@ -1,3 +1,3 @@
 # Arté
 
-https://art-projects.github.io/Art-/app/index.html/
+https://art-projects.github.io/Art-/app/index.html
